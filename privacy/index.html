@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy e trattamento dati · Heritage</title>
+  <meta name="description" content="Informativa privacy dell'app Heritage di Magnetico Associazione Culturale: l'app non raccoglie dati personali.">
+  <meta name="theme-color" content="#0E2A36">
+  <link rel="canonical" href="https://heritage.magnetico.cloud/privacy/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23285666'/%3E%3Cpath d='M16 48V28l16-12 16 12v20H38V36H26v12z' fill='%23D3E5EA'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    /* Stessi colori e caratteri delle landing page dei comuni. */
+    :root {
+      --ink: #0E2A36;
+      --primary: #285666;
+      --mist: #D3E5EA;
+      --gold: #E3A83B;
+      --stone: #F4EFE6;
+      --text: #1B2A31;
+      --muted: #54656C;
+      --line: rgba(14, 42, 54, .12);
+      --serif: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--stone);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection { background: var(--mist); color: var(--ink); }
+    a { color: var(--primary); text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+    .container { width: min(760px, 100% - 32px); margin-inline: auto; }
+
+    header {
+      background: var(--ink);
+      color: #fff;
+      padding: 20px 0 64px;
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--primary);
+      display: grid;
+      place-items: center;
+    }
+
+    .langs { display: flex; gap: 6px; }
+
+    .langs button {
+      font: inherit;
+      font-size: .85rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .8);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 999px;
+      padding: 4px 12px;
+      cursor: pointer;
+    }
+
+    .langs button[aria-pressed="true"] { background: #fff; color: var(--ink); border-color: #fff; }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(2rem, 6vw, 2.9rem);
+      line-height: 1.1;
+      margin: 48px 0 10px;
+      text-wrap: balance;
+    }
+
+    .updated { margin: 0; color: rgba(255, 255, 255, .7); font-size: .95rem; }
+
+    main { margin-top: -36px; padding-bottom: 56px; }
+
+    .summary {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--gold);
+      border-radius: 16px;
+      padding: 20px 22px;
+      box-shadow: 0 10px 30px rgba(14, 42, 54, .08);
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .summary svg { flex: none; margin-top: 3px; color: var(--primary); }
+
+    .sections { margin-top: 28px; }
+
+    section { padding: 22px 0; border-bottom: 1px solid var(--line); }
+    section:last-child { border-bottom: 0; }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      margin: 0 0 6px;
+      color: var(--ink);
+    }
+
+    section p { margin: 0; color: var(--text); }
+
+    .status { color: var(--muted); padding: 24px 0; }
+
+    footer { color: var(--muted); font-size: .9rem; padding-bottom: 48px; }
+
+    footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 24px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="bar">
+        <span class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round">
+              <path d="M6 10a6 6 0 1 1 12 0"/><path d="M7.5 13 12 20l4.5-7"/><circle cx="12" cy="21" r="1.4" fill="#E3A83B" stroke="none"/>
+            </svg>
+          </span>
+          Heritage
+        </span>
+        <div class="langs" id="langs" role="group" aria-label="Lingua / Language"></div>
+      </div>
+      <h1 id="title">Privacy e trattamento dati</h1>
+      <p class="updated" id="updated"></p>
+    </div>
+  </header>
+
+  <main class="container" id="content" aria-live="polite">
+    <p class="status" id="status">Caricamento dell'informativa…</p>
+    <noscript>
+      <p class="status">Per leggere l'informativa serve JavaScript. Per qualsiasi domanda sulla privacy
+      scrivi a <a href="mailto:info@magnetico.cloud">info@magnetico.cloud</a>.</p>
+    </noscript>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>&copy; <span id="year">2026</span> Magnetico Associazione Culturale</span>
+      <span><a href="mailto:info@magnetico.cloud">info@magnetico.cloud</a> · <a href="https://magnetico.cloud" rel="noopener">magnetico.cloud</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Il testo arriva dal repo dei contenuti (gli stessi file che legge l'app):
+    // catalog.json → privacy.files → privacy/<lingua>.json. Modificando quei file si aggiornano
+    // insieme l'app e questa pagina.
+    var CATALOG_URL = "https://raw.githubusercontent.com/Magnetico-Associazione-Culturale/Heritage/main/catalog.json";
+    var UI = {
+      it: { loading: "Caricamento dell'informativa…", updated: "Ultimo aggiornamento: ", error: "Non riusciamo a caricare l'informativa in questo momento. Per qualsiasi domanda sulla privacy scrivi a " },
+      en: { loading: "Loading the privacy notice…", updated: "Last updated: ", error: "We can't load the privacy notice right now. For any privacy question, write to " }
+    };
+    var NAMES = { it: "Italiano", en: "English", fr: "Français", de: "Deutsch", es: "Español" };
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function ui(lang) { return UI[lang] || UI.en; }
+
+    function el(tag, text) {
+      var node = document.createElement(tag);
+      if (text) node.textContent = text; // solo testo: niente HTML dai file remoti
+      return node;
+    }
+
+    function formatDate(value, lang) {
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
+      if (!m) return value || "";
+      try {
+        return new Intl.DateTimeFormat(lang, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+          .format(new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])));
+      } catch (e) { return value; }
+    }
+
+    function pickLanguage(files, fallback) {
+      var wanted = [new URLSearchParams(location.search).get("lang")]
+        .concat(navigator.languages || [navigator.language]);
+      for (var i = 0; i < wanted.length; i++) {
+        var code = (wanted[i] || "").toLowerCase().split(/[-_]/)[0];
+        if (files[code]) return code;
+      }
+      return files.en ? "en" : fallback;
+    }
+
+    function showError(lang) {
+      var box = document.getElementById("content");
+      box.textContent = "";
+      var p = el("p", ui(lang).error);
+      p.className = "status";
+      var a = el("a", "info@magnetico.cloud");
+      a.href = "mailto:info@magnetico.cloud";
+      p.appendChild(a);
+      p.appendChild(document.createTextNode("."));
+      box.appendChild(p);
+    }
+
+    function render(doc, lang) {
+      document.documentElement.lang = lang;
+      document.title = doc.title + " · Heritage";
+      document.getElementById("title").textContent = doc.title;
+      document.getElementById("updated").textContent = doc.updated ? ui(lang).updated + formatDate(doc.updated, lang) : "";
+
+      var box = document.getElementById("content");
+      box.textContent = "";
+      var summary = el("div");
+      summary.className = "summary";
+      summary.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>';
+      summary.appendChild(el("span", doc.summary));
+      box.appendChild(summary);
+
+      var list = el("div");
+      list.className = "sections";
+      (doc.sections || []).forEach(function (s) {
+        var section = el("section");
+        section.appendChild(el("h2", s.title));
+        section.appendChild(el("p", s.body));
+        list.appendChild(section);
+      });
+      box.appendChild(list);
+    }
+
+    function load(privacy, lang) {
+      document.getElementById("status") && (document.getElementById("status").textContent = ui(lang).loading);
+      Array.prototype.forEach.call(document.querySelectorAll("#langs button"), function (b) {
+        b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+      });
+      fetch(privacy.files[lang], { cache: "no-cache" })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (doc) { render(doc, lang); })
+        .catch(function () { showError(lang); });
+    }
+
+    fetch(CATALOG_URL, { cache: "no-cache" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (catalog) {
+        var privacy = catalog.privacy;
+        if (!privacy || !privacy.files) throw new Error("privacy mancante");
+        var lang = pickLanguage(privacy.files, privacy.default_language || "it");
+        var langs = document.getElementById("langs");
+        Object.keys(privacy.files).forEach(function (code) {
+          var b = el("button", NAMES[code] || code.toUpperCase());
+          b.type = "button";
+          b.dataset.lang = code;
+          b.addEventListener("click", function () {
+            var url = new URL(location.href);
+            url.searchParams.set("lang", code);
+            history.replaceState(null, "", url);
+            load(privacy, code);
+          });
+          langs.appendChild(b);
+        });
+        load(privacy, lang);
+      })
+      .catch(function () { showError("it"); });
+  </script>
+</body>
+</html>

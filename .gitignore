@@ -1,0 +1,5 @@
+# File di sistema macOS
+.DS_Store
+
+# Cache locale dello strumento di design Impeccable
+.impeccable/

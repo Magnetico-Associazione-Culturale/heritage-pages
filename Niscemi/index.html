@@ -3,26 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Heritage Niscemi — La storia di Niscemi, in tasca</title>
-  <meta name="description" content="Heritage Niscemi è l'app turistica che racconta il patrimonio culturale di Niscemi: itinerari nel centro storico, audioguide, tour a 360° e quiz. Un progetto di Magnetico Associazione Culturale.">
-  <meta name="theme-color" content="#0F2E42">
+  <title>Heritage · Niscemi — La storia di Niscemi, in tasca</title>
+  <meta name="description" content="Heritage è l'app turistica che racconta il patrimonio culturale di Niscemi: itinerari nel centro storico, audioguide, tour a 360° e quiz. Un progetto di Magnetico Associazione Culturale.">
+  <meta name="theme-color" content="#0E2A36">
+  <link rel="canonical" href="https://heritage.magnetico.cloud/Niscemi/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Heritage Niscemi — La storia di Niscemi, in tasca">
+  <meta property="og:title" content="Heritage · Niscemi — La storia di Niscemi, in tasca">
   <meta property="og:description" content="Itinerari, audioguide, tour a 360° e quiz per scoprire chiese, piazze e natura di Niscemi.">
+  <meta property="og:url" content="https://heritage.magnetico.cloud/Niscemi/">
+  <meta property="og:image" content="https://heritage.magnetico.cloud/Niscemi/media/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="it_IT">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B4965'/%3E%3Cpath d='M16 48V28l16-12 16 12v20H38V36H26v12z' fill='%23CAE9FF'/%3E%3C/svg%3E">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23285666'/%3E%3Cpath d='M16 48V28l16-12 16 12v20H38V36H26v12z' fill='%23D3E5EA'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="media/niscemi-aerea.webp">
   <style>
     :root {
-      --ink: #0F2E42;
-      --primary: #1B4965;
-      --accent: #5FA8D3;
-      --sky: #CAE9FF;
-      --sand: #F6F1E9;
-      --text: #1D2B36;
-      --muted: #5B6B78;
+      --ink: #0E2A36;
+      --primary: #285666;
+      --mist: #D3E5EA;
+      --gold: #E3A83B;
+      --stone: #F4EFE6;
+      --stone-deep: #E9E1D3;
+      --text: #1B2A31;
+      --muted: #54656C;
+      --line: rgba(14, 42, 54, .12);
       --radius: 20px;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+      --serif: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
       --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -33,15 +46,20 @@
       margin: 0;
       font-family: var(--sans);
       color: var(--text);
-      background: var(--sand);
+      background: var(--stone);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    a { color: inherit; }
+    ::selection { background: var(--mist); color: var(--ink); }
+
+    img { max-width: 100%; }
+
+    a { color: inherit; text-underline-offset: .2em; }
 
     :focus-visible {
-      outline: 3px solid var(--accent);
+      outline: 3px solid var(--gold);
       outline-offset: 3px;
       border-radius: 8px;
     }
@@ -50,6 +68,29 @@
       width: min(1120px, 100% - 48px);
       margin-inline: auto;
     }
+
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: 1.08;
+      margin: 0;
+      text-wrap: balance;
+    }
+
+    .skip {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+      z-index: 20;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .skip:focus { top: 16px; }
 
     /* Header */
     .site-header {
@@ -72,8 +113,17 @@
       color: #fff;
       text-decoration: none;
       font-family: var(--serif);
-      font-size: 1.35rem;
-      letter-spacing: .02em;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .brand small {
+      font-family: var(--sans);
+      font-size: .9rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, .72);
+      padding-left: 12px;
+      border-left: 1px solid rgba(255, 255, 255, .3);
     }
 
     .brand-mark {
@@ -101,73 +151,44 @@
       position: relative;
       overflow: hidden;
       color: #fff;
-      padding: 160px 0 120px;
-      background:
-        radial-gradient(1200px 600px at 85% 10%, rgba(95, 168, 211, .35), transparent 60%),
-        radial-gradient(900px 500px at 0% 100%, rgba(202, 233, 255, .12), transparent 60%),
-        linear-gradient(160deg, var(--ink) 0%, var(--primary) 100%);
+      padding: 168px 0 120px;
+      background: var(--ink) url("media/niscemi-aerea.webp") center / cover no-repeat;
     }
 
-    .hero::after {
+    .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M0 40h80M40 0v80' stroke='%23ffffff' stroke-opacity='.04'/%3E%3C/svg%3E");
-      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(14, 42, 54, .94) 0%, rgba(14, 42, 54, .82) 42%, rgba(14, 42, 54, .45) 100%),
+        linear-gradient(0deg, rgba(14, 42, 54, .7) 0%, transparent 40%);
     }
 
     .hero .container {
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.15fr .85fr;
       align-items: center;
       gap: 64px;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .1);
-      border: 1px solid rgba(255, 255, 255, .2);
-      font-size: .8rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    h1, h2, h3 {
-      font-family: var(--serif);
-      font-weight: 600;
-      line-height: 1.12;
-      margin: 0;
-    }
-
     .hero h1 {
-      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
-      margin: 24px 0 20px;
-      letter-spacing: -.01em;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      margin: 0 0 24px;
+      letter-spacing: -.015em;
     }
 
     .hero h1 em {
       font-style: italic;
-      color: var(--sky);
+      font-weight: 500;
+      color: var(--mist);
     }
 
     .hero p.lead {
       font-size: 1.15rem;
-      color: rgba(255, 255, 255, .8);
-      max-width: 34em;
+      color: rgba(255, 255, 255, .86);
+      max-width: 33em;
       margin: 0 0 36px;
     }
 
@@ -175,15 +196,15 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 20px;
+      gap: 16px 20px;
     }
 
     .cta-note {
-      font-size: .85rem;
-      color: rgba(255, 255, 255, .6);
+      font-size: .88rem;
+      color: rgba(255, 255, 255, .72);
     }
 
-    /* App Store button */
+    /* Store buttons */
     .store-btn {
       display: inline-flex;
       align-items: center;
@@ -194,13 +215,12 @@
       color: #fff;
       text-decoration: none;
       border: 1px solid rgba(255, 255, 255, .35);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: transform .2s ease, border-color .2s ease;
     }
 
     .store-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
+      border-color: rgba(255, 255, 255, .7);
     }
 
     .store-btn svg { width: 30px; height: 30px; flex: none; }
@@ -214,27 +234,23 @@
     }
 
     .store-btn small { font-size: .72rem; opacity: .85; }
-    .store-btn.play small { text-transform: uppercase; letter-spacing: .06em; font-size: .64rem; }
+    .store-btn.play small { text-transform: uppercase; letter-spacing: .05em; font-size: .7rem; }
     .store-btn strong { font-size: 1.3rem; font-weight: 600; letter-spacing: -.01em; }
 
     .store-btn[aria-disabled="true"] { cursor: default; }
+    .store-btn[aria-disabled="true"]:hover { transform: none; border-color: rgba(255, 255, 255, .35); }
 
-    /* Phone mockup */
-    .phone-wrap {
-      display: flex;
-      justify-content: center;
-    }
-
+    /* Phone frame (hero + tour) */
     .phone {
       width: 290px;
-      aspect-ratio: 9 / 19;
+      aspect-ratio: 923 / 2000;
       border-radius: 46px;
-      padding: 12px;
-      background: linear-gradient(145deg, #2a3a47, #0b151d);
+      padding: 11px;
+      background: linear-gradient(145deg, #2c3d47, #0a141a);
       box-shadow:
-        0 40px 80px rgba(0, 0, 0, .45),
+        0 30px 60px -10px rgba(5, 20, 27, .45),
         inset 0 0 0 2px rgba(255, 255, 255, .08);
-      transform: rotate(-4deg);
+      box-sizing: content-box;
     }
 
     .screen {
@@ -257,143 +273,264 @@
       content: "";
       position: absolute;
       z-index: 1;
-      top: 10px;
+      top: 9px;
       left: 50%;
-      width: 80px;
+      width: 76px;
       height: 22px;
       transform: translateX(-50%);
       border-radius: 20px;
       background: #000;
     }
 
-    /* Sections */
-    section { padding: 110px 0; }
-
-    .section-head {
-      max-width: 640px;
-      margin-bottom: 56px;
+    .hero .phone-wrap {
+      display: flex;
+      justify-content: center;
     }
 
-    .section-head .kicker {
-      font-size: .8rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--accent);
+    .hero .phone { transform: rotate(-4deg); }
+
+    /* Sections */
+    section { padding: 112px 0; }
+
+    .section-head {
+      max-width: 620px;
+      margin-bottom: 48px;
     }
 
     .section-head h2 {
-      font-size: clamp(2rem, 3.6vw, 2.8rem);
-      margin: 12px 0 16px;
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      margin: 0 0 16px;
       color: var(--ink);
+      letter-spacing: -.01em;
     }
 
-    .section-head p { color: var(--muted); font-size: 1.08rem; margin: 0; }
+    .section-head p { color: var(--muted); font-size: 1.1rem; margin: 0; }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    /* Tour of the app */
+    .tour-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
     }
 
-    .feature {
-      padding: 32px;
-      border-radius: var(--radius);
-      background: #fff;
-      border: 1px solid rgba(15, 46, 66, .06);
-      transition: transform .25s ease, box-shadow .25s ease;
+    .tour-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 52px;
+      flex: none;
     }
 
-    .feature:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(15, 46, 66, .08);
+    .tour-count {
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      font-size: .95rem;
+      min-width: 3.5em;
+      text-align: center;
     }
 
-    .feature-icon {
+    .tour-btn {
       width: 48px;
       height: 48px;
-      border-radius: 14px;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      background: var(--sky);
-      color: var(--primary);
-      margin-bottom: 20px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background .2s, color .2s, opacity .2s;
     }
 
-    .feature-icon svg { width: 24px; height: 24px; }
+    .tour-btn:hover:not(:disabled) { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .tour-btn:disabled { opacity: .35; cursor: default; }
+    .tour-btn svg { width: 20px; height: 20px; }
 
-    .feature h3 { font-size: 1.3rem; color: var(--ink); margin-bottom: 8px; }
-    .feature p { margin: 0; color: var(--muted); }
+    .tour-track {
+      list-style: none;
+      margin: 0;
+      padding: 8px max(24px, calc((100% - 1120px) / 2)) 28px;
+      display: flex;
+      gap: 56px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: max(24px, calc((100% - 1120px) / 2));
+      overscroll-behavior-x: contain;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) var(--stone-deep);
+    }
 
-    /* Comuni */
-    .comuni {
+    .tour-track::-webkit-scrollbar { height: 6px; }
+    .tour-track::-webkit-scrollbar-track { background: var(--stone-deep); border-radius: 3px; }
+    .tour-track::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+    .tour-track:focus-visible { outline-offset: -3px; }
+
+    .tour-slide {
+      flex: none;
+      width: 280px;
+      scroll-snap-align: start;
+    }
+
+    .tour-slide .phone { width: 258px; }
+
+    .tour-slide h3 {
+      font-size: 1.55rem;
+      color: var(--ink);
+      margin: 32px 0 8px;
+    }
+
+    .tour-slide p { margin: 0; color: var(--muted); }
+
+    @supports (animation-timeline: view()) {
+      @media (prefers-reduced-motion: no-preference) {
+        .tour-slide .phone {
+          animation: settle linear both;
+          animation-timeline: view(inline);
+          animation-range: entry 0% entry 90%;
+        }
+
+        @keyframes settle {
+          from { transform: translateY(18px) scale(.94); opacity: .55; }
+          to { transform: none; opacity: 1; }
+        }
+      }
+    }
+
+    .also {
+      list-style: none;
+      margin: 64px auto 0;
+      padding: 32px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    .also li { display: flex; gap: 16px; align-items: flex-start; }
+
+    .also svg {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      margin-top: 3px;
+      color: var(--primary);
+    }
+
+    .also b { display: block; color: var(--ink); }
+    .also span { color: var(--muted); font-size: .95rem; }
+
+    /* Places */
+    .places {
       background: var(--ink);
       color: #fff;
     }
 
-    .comuni .container {
+    .places .section-head h2 { color: #fff; }
+    .places .section-head p { color: rgba(211, 229, 234, .8); }
+
+    .mosaic {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .comuni .section-head { margin: 0; }
-    .comuni .section-head h2 { color: #fff; }
-    .comuni .section-head p { color: rgba(255, 255, 255, .72); }
-
-    .points {
-      list-style: none;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 340px;
+      gap: 20px;
       margin: 0;
       padding: 0;
-      display: grid;
-      gap: 16px;
+      list-style: none;
     }
 
-    .points li {
-      display: flex;
-      gap: 16px;
-      padding: 22px 24px;
+    .mosaic li {
+      position: relative;
+      overflow: hidden;
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, .05);
-      border: 1px solid rgba(255, 255, 255, .1);
+      background: var(--primary);
     }
 
-    .points li::before {
-      content: "";
+    .mosaic li:nth-child(1) { grid-column: span 7; }
+    .mosaic li:nth-child(2) { grid-column: span 5; }
+    .mosaic li:nth-child(3) { grid-column: span 5; }
+    .mosaic li:nth-child(4) { grid-column: span 7; }
+
+    .mosaic img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s var(--ease-out);
+    }
+
+    .mosaic li:hover img { transform: scale(1.04); }
+
+    .mosaic .caption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 72px 24px 22px;
+      background: linear-gradient(0deg, rgba(8, 26, 34, .88) 0%, rgba(8, 26, 34, .5) 55%, transparent 100%);
+    }
+
+    .mosaic h3 { font-size: 1.45rem; }
+    .mosaic p { margin: 4px 0 0; color: rgba(255, 255, 255, .82); font-size: .95rem; max-width: 36em; }
+
+    .routes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .route {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 26px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(211, 229, 234, .16);
+    }
+
+    .route b { display: block; font-family: var(--serif); font-size: 1.3rem; font-weight: 600; line-height: 1.2; }
+    .route > div > span { color: rgba(211, 229, 234, .75); font-size: .92rem; }
+
+    .route dl {
+      display: flex;
+      gap: 20px;
+      margin: 0;
       flex: none;
-      width: 10px;
-      height: 10px;
-      margin-top: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px rgba(95, 168, 211, .2);
+      font-variant-numeric: tabular-nums;
     }
 
-    .points b { display: block; margin-bottom: 2px; }
-    .points span { color: rgba(255, 255, 255, .7); font-size: .95rem; }
+    .route dl div { text-align: right; }
+    .route dt { font-size: .78rem; color: rgba(211, 229, 234, .7); }
+    .route dd { margin: 0; font-weight: 600; }
 
     /* Final CTA */
-    .final {
-      text-align: center;
-    }
+    .final { text-align: center; }
 
     .final-card {
-      padding: 72px 32px;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 32px;
       border-radius: 32px;
       color: #fff;
-      background:
-        radial-gradient(600px 300px at 50% 0%, rgba(95, 168, 211, .45), transparent 70%),
-        linear-gradient(160deg, var(--primary), var(--ink));
+      background: var(--primary) url("media/niscemi-aerea.webp") center 30% / cover no-repeat;
     }
 
-    .final-card h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px; }
-    .final-card p { color: rgba(255, 255, 255, .75); margin: 0 auto 32px; max-width: 32em; }
+    .final-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(40, 86, 102, .84), rgba(14, 42, 54, .93));
+    }
+
+    .final-card > * { position: relative; }
+    .final-card h2 { font-size: clamp(2.1rem, 4.4vw, 3.2rem); margin-bottom: 16px; }
+    .final-card p { color: rgba(255, 255, 255, .82); margin: 0 auto 36px; max-width: 34em; font-size: 1.08rem; }
     .final-card .cta-row { justify-content: center; }
 
     /* Footer */
     footer {
-      padding: 40px 0 56px;
+      padding: 0 0 56px;
       color: var(--muted);
       font-size: .9rem;
     }
@@ -402,28 +539,40 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 16px;
-      border-top: 1px solid rgba(15, 46, 66, .1);
+      gap: 12px 24px;
+      border-top: 1px solid var(--line);
       padding-top: 32px;
     }
 
+    footer a { color: var(--primary); }
+
     /* Responsive */
     @media (max-width: 900px) {
-      .hero { padding: 130px 0 90px; }
-      .hero .container,
-      .comuni .container { grid-template-columns: 1fr; gap: 56px; }
-      .hero .container { text-align: center; }
+      .hero { padding: 132px 0 88px; }
+      .hero::before { background: linear-gradient(180deg, rgba(14, 42, 54, .9) 0%, rgba(14, 42, 54, .8) 60%, rgba(14, 42, 54, .92) 100%); }
+      .hero .container { grid-template-columns: 1fr; gap: 56px; text-align: center; }
       .hero p.lead { margin-inline: auto; }
       .cta-row { justify-content: center; }
-      .features { grid-template-columns: repeat(2, 1fr); }
       .nav { display: none; }
+      .also { grid-template-columns: 1fr; gap: 24px; }
+      .mosaic { grid-auto-rows: 280px; }
+      .mosaic li:nth-child(n) { grid-column: span 12; }
+      .routes { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
       section { padding: 80px 0; }
-      .features { grid-template-columns: 1fr; }
-      .phone { width: 250px; }
-      .final-card { padding: 56px 24px; }
+      .container { width: calc(100% - 32px); }
+      .tour-track { padding-inline: 16px; scroll-padding-inline: 16px; gap: 32px; }
+      .tour-top { display: block; }
+      .tour-controls { margin: -16px 0 32px; }
+      .tour-slide { width: 250px; }
+      .tour-slide .phone { width: 228px; }
+      .hero .phone { width: 240px; }
+      .brand small { display: none; }
+      .route { flex-direction: column; align-items: flex-start; }
+      .route dl div { text-align: left; }
+      .final-card { padding: 56px 22px; border-radius: 24px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -434,16 +583,19 @@
 </head>
 <body>
 
+  <a class="skip" href="#top">Vai al contenuto</a>
+
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="#top" aria-label="Heritage Niscemi, torna all'inizio">
+      <a class="brand" href="#top" aria-label="Heritage, guida di Niscemi: torna all'inizio">
         <span class="brand-mark" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 64 64"><path d="M8 56V26L32 8l24 18v30H40V38H24v18z" fill="#CAE9FF"/></svg>
+          <svg width="20" height="20" viewBox="0 0 64 64"><path d="M8 56V26L32 8l24 18v30H40V38H24v18z" fill="#D3E5EA"/></svg>
         </span>
-        Heritage Niscemi
+        Heritage
+        <small>Niscemi</small>
       </a>
       <nav class="nav" aria-label="Navigazione principale">
-        <a href="#funzioni">Funzioni</a>
+        <a href="#app">L'app</a>
         <a href="#luoghi">Luoghi</a>
         <a href="#scarica">Scarica</a>
       </nav>
@@ -454,21 +606,19 @@
     <section class="hero">
       <div class="container">
         <div>
-          <span class="eyebrow">Comune di Niscemi · Sicilia</span>
           <h1>La storia di Niscemi, <em>in tasca.</em></h1>
           <p class="lead">
             Itinerari guidati, audioguide, tour immersivi a 360° e quiz per scoprire
-            le chiese e le piazze del centro storico, il Belvedere sulla Piana di Gela
-            e la Sughereta. Heritage Niscemi accompagna cittadini e visitatori
-            alla scoperta della città.
+            le chiese e le piazze del centro storico, il Santuario della Madonna del Bosco
+            e la Sughereta. Scarica Heritage e scegli Niscemi.
           </p>
           <div class="cta-row">
             <!-- Sostituire href con i link degli store e rimuovere aria-disabled -->
-            <a class="store-btn" href="#" aria-disabled="true" aria-label="Scarica Heritage Niscemi su App Store">
+            <a class="store-btn" href="#" aria-disabled="true" aria-label="Scarica Heritage su App Store">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.960-1.040-2.040.027-3.910 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.090 1.013 1.454 2.208 3.090 3.792 3.039 1.520-.065 2.090-.987 3.935-.987 1.831 0 2.350.987 3.960.948 1.637-.026 2.676-1.480 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.220-4.857-.026-3.040 2.480-4.494 2.597-4.559-1.429-2.090-3.623-2.324-4.390-2.376-2-.156-3.675 1.090-4.610 1.090zM15.530 3.830c.843-1.012 1.400-2.427 1.245-3.830-1.207.052-2.662.805-3.532 1.818-.780.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
               <span><small>Scarica su</small><strong>App Store</strong></span>
             </a>
-            <a class="store-btn play" href="#" aria-disabled="true" aria-label="Scarica Heritage Niscemi su Google Play">
+            <a class="store-btn play" href="#" aria-disabled="true" aria-label="Scarica Heritage su Google Play">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.490 1.490 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.600l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.450.195a1.466 1.466 0 0 0-.946-.179l11.040 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.540-3.230-3.210z"/></svg>
               <span><small>Disponibile su</small><strong>Google Play</strong></span>
             </a>
@@ -476,94 +626,124 @@
           </div>
         </div>
 
-        <div class="phone-wrap" aria-hidden="true">
+        <div class="phone-wrap">
           <div class="phone">
             <div class="screen">
-              <img src="screenshot.png" alt="" width="1179" height="2556">
+              <img src="media/screen-home.webp" alt="La Home di Niscemi nell'app Heritage, con la foto aerea della città e le tappe da non perdere" width="923" height="2000" fetchpriority="high">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="funzioni">
-      <div class="container">
+    <section id="app" aria-labelledby="app-title">
+      <div class="container tour-top">
         <div class="section-head">
-          <span class="kicker">Funzioni</span>
-          <h2>Tutto quello che serve per visitare Niscemi</h2>
-          <p>Contenuti curati sul territorio niscemese e sempre aggiornati, in un'esperienza semplice e piacevole da usare.</p>
+          <h2 id="app-title">Una guida che cammina con te</h2>
+          <p>Dalla mappa degli itinerari al racconto di ogni luogo: ecco cosa trovi aprendo Niscemi in Heritage.</p>
         </div>
-
-        <div class="features">
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-6-3V4l6 3 6-3 6 3v13l-6-3-6 3z"/><path d="M9 7v13M15 4v13"/></svg>
-            </div>
-            <h3>Itinerari</h3>
-            <p>Percorsi tematici tra le vie di Niscemi, con tappe in sequenza e indicazioni per seguirli a piedi.</p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            </div>
-            <h3>Tappe</h3>
-            <p>Schede dettagliate di chiese, palazzi e luoghi d'interesse della città, con storia, foto e curiosità.</p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
-            </div>
-            <h3>Tour a 360°</h3>
-            <p>Entra negli spazi più belli con immagini panoramiche immersive, anche da casa.</p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0118 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>
-            </div>
-            <h3>Audioguide</h3>
-            <p>Ascolta il racconto di ogni luogo mentre cammini, senza dover leggere lo schermo.</p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 114 2c-1 .6-1.5 1.2-1.5 2.2"/><path d="M12 17h.01"/></svg>
-            </div>
-            <h3>Quiz</h3>
-            <p>Metti alla prova ciò che hai scoperto su Niscemi con quiz pensati per ragazzi, famiglie e scuole.</p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
-            </div>
-            <h3>Sempre aggiornata</h3>
-            <p>Nuovi contenuti arrivano direttamente nell'app, senza bisogno di aggiornamenti dallo store.</p>
-          </article>
+        <div class="tour-controls">
+          <button class="tour-btn" type="button" data-dir="-1" aria-controls="tour" aria-label="Schermata precedente" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <span class="tour-count" aria-live="polite"><span id="tour-current">1</span> / 5</span>
+          <button class="tour-btn" type="button" data-dir="1" aria-controls="tour" aria-label="Schermata successiva">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         </div>
+      </div>
+
+      <ul class="tour-track" id="tour" tabindex="0" aria-label="Schermate dell'app, scorri in orizzontale">
+        <li class="tour-slide">
+          <div class="phone"><div class="screen"><img src="media/screen-home.webp" alt="Home di Niscemi con descrizione del comune e tappe in evidenza" width="923" height="2000" loading="lazy"></div></div>
+          <h3>Il comune a colpo d'occhio</h3>
+          <p>La città, le tappe da non perdere e gli itinerari in un'unica schermata. Se lo consenti, l'app apre Niscemi da sola quando sei in città.</p>
+        </li>
+        <li class="tour-slide">
+          <div class="phone"><div class="screen"><img src="media/screen-itinerario.webp" alt="Itinerario Fede e Natura sulla mappa, con durata, distanza e tappe in ordine" width="923" height="2000" loading="lazy"></div></div>
+          <h3>Itinerari sulla mappa</h3>
+          <p>Percorsi a piedi con le tappe in ordine, la durata e la distanza, dal centro storico fino al Santuario nella Sughereta.</p>
+        </li>
+        <li class="tour-slide">
+          <div class="phone"><div class="screen"><img src="media/screen-tappa.webp" alt="Scheda della Chiesa Madre Santa Maria d'Itria con il lettore dell'audioguida" width="923" height="2000" loading="lazy"></div></div>
+          <h3>Schede e audioguide</h3>
+          <p>Storia e foto di ogni luogo e, dove disponibile, un'audioguida da ascoltare mentre cammini.</p>
+        </li>
+        <li class="tour-slide">
+          <div class="phone"><div class="screen"><img src="media/screen-tour360.webp" alt="Tour a 360° della navata centrale della Chiesa Madre" width="923" height="2000" loading="lazy"></div></div>
+          <h3>Tour a 360°</h3>
+          <p>Entra nella navata della Chiesa Madre o al centro della piazza: trascina lo schermo o muovi il telefono per guardarti intorno.</p>
+        </li>
+        <li class="tour-slide">
+          <div class="phone"><div class="screen"><img src="media/screen-vivi.webp" alt="Sezione Vivi con le attività del territorio divise per categoria" width="923" height="2000" loading="lazy"></div></div>
+          <h3>Vivi Niscemi</h3>
+          <p>Dove mangiare, dormire, cosa fare e i servizi utili, con orari, contatti e indicazioni.</p>
+        </li>
+      </ul>
+
+      <div class="container">
+        <ul class="also">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 114 2c-1 .6-1.5 1.2-1.5 2.2"/><path d="M12 17h.01"/></svg>
+            <div><b>Quiz</b><span>Metti alla prova ciò che hai scoperto su Niscemi, da soli, in famiglia o in classe.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+            <div><b>Sempre aggiornata</b><span>I nuovi contenuti arrivano direttamente nell'app, senza aggiornarla dallo store.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg>
+            <div><b>Italiano e inglese</b><span>Testi e schede nelle due lingue, per cittadini e visitatori.</span></div>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section id="luoghi" class="comuni">
+    <section id="luoghi" class="places" aria-labelledby="luoghi-title">
       <div class="container">
         <div class="section-head">
-          <span class="kicker">Scopri Niscemi</span>
-          <h2>Una città affacciata sulla Piana di Gela</h2>
+          <h2 id="luoghi-title">Una città affacciata sulla Piana di Gela</h2>
           <p>
-            Dal centro storico alle chiese, fino alla natura della Sughereta:
-            Heritage Niscemi raccoglie in un'unica app i luoghi che raccontano
-            l'identità della città.
+            Niscemi sorge su un altopiano tra la Piana di Gela e i Monti Iblei, circondata
+            dalla Riserva della Sughereta. Questi sono alcuni dei luoghi che trovi nell'app.
           </p>
         </div>
 
-        <ul class="points">
-          <li><div><b>Chiesa Madre e centro storico</b><span>Il cuore della città, tra Piazza Vittorio Emanuele III e le sue chiese.</span></div></li>
-          <li><div><b>Santuario di Maria SS. del Bosco</b><span>Il luogo di culto legato alla patrona di Niscemi.</span></div></li>
-          <li><div><b>Belvedere</b><span>Un affaccio panoramico sulla Piana di Gela fino al mare.</span></div></li>
-          <li><div><b>Riserva Sughereta di Niscemi</b><span>Il bosco di querce da sughero, patrimonio naturale del territorio.</span></div></li>
+        <ul class="mosaic">
+          <li>
+            <img src="media/santuario-madonna-del-bosco.webp" alt="Facciata del Santuario della Madonna del Bosco tra i pini" width="2048" height="1365" loading="lazy">
+            <div class="caption"><h3>Santuario della Madonna del Bosco</h3><p>Dedicato alla patrona di Niscemi, immerso nella Sughereta.</p></div>
+          </li>
+          <li>
+            <img src="media/chiesa-madre.jpg" alt="Chiesa Madre Santa Maria d'Itria affacciata sulla piazza" width="923" height="490" loading="lazy">
+            <div class="caption"><h3>Chiesa Madre Santa Maria d'Itria</h3><p>Il principale luogo di culto del centro storico.</p></div>
+          </li>
+          <li>
+            <img src="media/piazza-vittorio-emanuele.webp" alt="Veduta di Piazza Vittorio Emanuele" width="720" height="616" loading="lazy">
+            <div class="caption"><h3>Piazza Vittorio Emanuele</h3><p>Il salotto urbano di Niscemi, anche in vista a 360°.</p></div>
+          </li>
+          <li>
+            <img src="media/palazzo-comunale.webp" alt="Facciata del Palazzo Comunale con il balcone e le bandiere" width="1280" height="1223" loading="lazy" style="object-position: center 40%">
+            <div class="caption"><h3>Palazzo Comunale</h3><p>La sede del Municipio, centro amministrativo della città.</p></div>
+          </li>
         </ul>
+
+        <div class="routes">
+          <div class="route">
+            <div><b>Tour del Centro Storico</b><span>Chiese e palazzi del centro, a piedi</span></div>
+            <dl>
+              <div><dt>Durata</dt><dd>90 min</dd></div>
+              <div><dt>Tappe</dt><dd>3</dd></div>
+            </dl>
+          </div>
+          <div class="route">
+            <div><b>Fede e Natura</b><span>Dal centro al Santuario nella Sughereta</span></div>
+            <dl>
+              <div><dt>Durata</dt><dd>120 min</dd></div>
+              <div><dt>Tappe</dt><dd>2</dd></div>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -571,13 +751,13 @@
       <div class="container">
         <div class="final-card">
           <h2>Inizia a esplorare Niscemi</h2>
-          <p>Scarica Heritage Niscemi e scopri la storia della città, una tappa alla volta.</p>
+          <p>Scarica Heritage e scegli Niscemi dall'elenco dei comuni. Poi scopri la storia della città, una tappa alla volta.</p>
           <div class="cta-row">
-            <a class="store-btn" href="#" aria-disabled="true" aria-label="Scarica Heritage Niscemi su App Store">
+            <a class="store-btn" href="#" aria-disabled="true" aria-label="Scarica Heritage su App Store">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.960-1.040-2.040.027-3.910 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.090 1.013 1.454 2.208 3.090 3.792 3.039 1.520-.065 2.090-.987 3.935-.987 1.831 0 2.350.987 3.960.948 1.637-.026 2.676-1.480 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.220-4.857-.026-3.040 2.480-4.494 2.597-4.559-1.429-2.090-3.623-2.324-4.390-2.376-2-.156-3.675 1.090-4.610 1.090zM15.530 3.830c.843-1.012 1.400-2.427 1.245-3.830-1.207.052-2.662.805-3.532 1.818-.780.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
               <span><small>Scarica su</small><strong>App Store</strong></span>
             </a>
-            <a class="store-btn play" href="#" aria-disabled="true" aria-label="Scarica Heritage Niscemi su Google Play">
+            <a class="store-btn play" href="#" aria-disabled="true" aria-label="Scarica Heritage su Google Play">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.490 1.490 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.600l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.450.195a1.466 1.466 0 0 0-.946-.179l11.040 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.540-3.230-3.210z"/></svg>
               <span><small>Disponibile su</small><strong>Google Play</strong></span>
             </a>
@@ -590,16 +770,49 @@
   <footer>
     <div class="container">
       <span>&copy; <span id="year">2026</span> Magnetico Associazione Culturale</span>
-      <span>Heritage Niscemi · App turistica della città di Niscemi</span>
+      <span>Heritage · guida turistica di Niscemi · <a href="https://www.comune.niscemi.cl.it" rel="noopener">Comune di Niscemi</a></span>
     </div>
   </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
     // Blocca il click finché il link dello store non è impostato
     document.querySelectorAll('.store-btn[aria-disabled="true"]').forEach(function (el) {
       el.addEventListener("click", function (e) { e.preventDefault(); });
     });
+
+    // Tour delle schermate: frecce e contatore
+    (function () {
+      var track = document.getElementById("tour");
+      var slides = track.querySelectorAll(".tour-slide");
+      var prev = document.querySelector('.tour-btn[data-dir="-1"]');
+      var next = document.querySelector('.tour-btn[data-dir="1"]');
+      var current = document.getElementById("tour-current");
+
+      function step() {
+        return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+      }
+
+      function update() {
+        var max = track.scrollWidth - track.clientWidth - 2;
+        var index = Math.round(track.scrollLeft / step());
+        if (track.scrollLeft >= max) index = slides.length - 1;
+        current.textContent = Math.min(index + 1, slides.length);
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max;
+      }
+
+      [prev, next].forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          track.scrollBy({ left: step() * Number(btn.dataset.dir), behavior: "smooth" });
+        });
+      });
+
+      track.addEventListener("scroll", function () { window.requestAnimationFrame(update); }, { passive: true });
+      window.addEventListener("resize", update);
+      update();
+    })();
   </script>
 </body>
 </html>
