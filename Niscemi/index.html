@@ -7,6 +7,9 @@
   <meta name="description" content="Heritage è l'app turistica che racconta il patrimonio culturale di Niscemi: itinerari nel centro storico, audioguide, tour a 360° e quiz. Un progetto di Magnetico Associazione Culturale.">
   <meta name="theme-color" content="#0E2A36">
   <link rel="canonical" href="https://heritage.magnetico.cloud/Niscemi/">
+  <link rel="alternate" hreflang="it" href="https://heritage.magnetico.cloud/Niscemi/">
+  <link rel="alternate" hreflang="en" href="https://heritage.magnetico.cloud/Niscemi/en/">
+  <link rel="alternate" hreflang="x-default" href="https://heritage.magnetico.cloud/Niscemi/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Heritage · Niscemi — La storia di Niscemi, in tasca">
   <meta property="og:description" content="Itinerari, audioguide, tour a 360° e quiz per scoprire chiese, piazze e natura di Niscemi.">
@@ -23,6 +26,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="media/niscemi-aerea.webp">
+  <script>
+    // Prima visita da un telefono non in italiano: versione inglese. La scelta fatta con il
+    // pulsante della lingua vince sempre.
+    (function () {
+      try {
+        if (localStorage.getItem("heritage-lang") !== null) return;
+        var l = ((navigator.languages && navigator.languages[0]) || navigator.language || "it").toLowerCase();
+        if (l.indexOf("it") !== 0) location.replace("en/" + location.hash);
+      } catch (e) {}
+    })();
+  </script>
   <style>
     :root {
       --ink: #0E2A36;
@@ -148,6 +162,25 @@
     }
 
     .nav a:hover { color: #fff; }
+
+    .header-end { display: flex; align-items: center; }
+
+    .lang-switch {
+      margin-left: 28px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 999px;
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-decoration: none;
+      transition: background-color .2s, border-color .2s;
+    }
+
+    .lang-switch:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .6); }
+
+    @media (max-width: 900px) { .lang-switch { margin-left: 0; } }
 
     /* Hero */
     .hero {
@@ -595,11 +628,14 @@
         Heritage
         <small>Niscemi</small>
       </a>
-      <nav class="nav" aria-label="Navigazione principale">
-        <a href="#app">L'app</a>
-        <a href="#luoghi">Luoghi</a>
-        <a href="#scarica">Scarica</a>
+      <div class="header-end">
+        <nav class="nav" aria-label="Navigazione principale">
+          <a href="#app">L'app</a>
+          <a href="#luoghi">Luoghi</a>
+          <a href="#scarica">Scarica</a>
       </nav>
+        <a class="lang-switch" href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+      </div>
     </div>
   </header>
 
@@ -777,6 +813,13 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Ricorda la lingua scelta con il pulsante IT/EN.
+    document.querySelectorAll(".lang-switch").forEach(function (a) {
+      a.addEventListener("click", function () {
+        try { localStorage.setItem("heritage-lang", a.getAttribute("hreflang")); } catch (e) {}
+      });
+    });
 
     // Blocca il click finché il link dello store non è impostato
     document.querySelectorAll('.store-btn[aria-disabled="true"]').forEach(function (el) {
