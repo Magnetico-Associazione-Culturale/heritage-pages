@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "org.magnetico.heritage",
+      "sha256_cert_fingerprints": [
+        "8D:FB:FA:17:19:80:9C:80:C9:BA:ED:48:49:D5:A0:ED:69:8F:AE:30:44:F5:2C:14:A2:AF:F2:F2:5A:23:26:DB",
+        "CF:A9:C6:5C:00:06:22:6C:BB:F9:0F:CC:3E:71:90:50:F3:29:82:BE:A5:D8:AA:74:9C:C7:CE:E7:BF:85:AF:E5"
+      ]
+    }
+  }
+]

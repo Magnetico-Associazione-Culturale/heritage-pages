@@ -1,0 +1,42 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "7D6HY7TNPM.it.magnetico.regalbutoheritage"
+        ],
+        "components": [
+          {
+            "/": "/privacy/*",
+            "exclude": true,
+            "comment": "Informative privacy: restano pagine web"
+          },
+          {
+            "/": "/assets/*",
+            "exclude": true
+          },
+          {
+            "/": "/scripts/*",
+            "exclude": true
+          },
+          {
+            "/": "/qr/*",
+            "exclude": true
+          },
+          {
+            "/": "/.well-known/*",
+            "exclude": true
+          },
+          {
+            "/": "/favicon.ico",
+            "exclude": true
+          },
+          {
+            "/": "/?*",
+            "comment": "Landing dei comuni (/<Nome>/, il QR stampato): aprono l'app Heritage su quel comune"
+          }
+        ]
+      }
+    ]
+  }
+}
