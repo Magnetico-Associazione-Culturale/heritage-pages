@@ -72,16 +72,7 @@
       text-decoration: none;
     }
 
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      flex: none;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, .18), 0 4px 12px rgba(0, 0, 0, .28);
-    }
-
-    .brand-mark img { display: block; width: 100%; height: 100%; }
+    .brand-logo { display: block; height: 34px; width: auto; flex: none; }
 
     .langs { display: flex; gap: 6px; }
 
@@ -164,8 +155,7 @@
     <div class="container">
       <div class="bar">
         <span class="brand">
-          <span class="brand-mark" aria-hidden="true"><img src="/assets/brand/logo-128.webp" alt="" width="34" height="34"></span>
-          Heritage
+          <img class="brand-logo" src="/assets/brand/heritage-logo-white.webp" alt="Heritage" width="119" height="34">
         </span>
         <div class="langs" id="langs" role="group" aria-label="Lingua / Language"></div>
       </div>
